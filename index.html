@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phil Tinsley | Operations & Change Consultant</title>
+    <meta name="description" content="Helping organisations go digital without losing what works. Practical change management, digital transformation, AI implementation, and quality & compliance systems.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --navy: #1B365D; --navy-light: #2A4A7A; --navy-dark: #0F1F3A; --white: #FFFFFF; --off-white: #F7F8FA; --grey-light: #E8EBF0; --grey-text: #5A6577; --text-dark: #1A1A2E; --accent: #3B82C4; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text-dark); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        header { background: var(--navy); color: var(--white); padding: 0; }
+        .header-top { max-width: 960px; margin: 0 auto; padding: 2.5rem 2rem 2rem; display: flex; align-items: center; gap: 1.5rem; }
+        .logo { width: 56px; height: 56px; border: 2px solid rgba(255,255,255,0.6); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; letter-spacing: 1px; flex-shrink: 0; }
+        .header-text h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; line-height: 1.2; }
+        .header-text .subtitle { font-size: 1rem; font-weight: 300; opacity: 0.85; margin-top: 0.15rem; }
+        .header-tagline { max-width: 960px; margin: 0 auto; padding: 0 2rem 2.5rem; }
+        .header-tagline h2 { font-size: 1.35rem; font-weight: 600; line-height: 1.4; max-width: 640px; }
+        .header-tagline .services-line { font-size: 0.9rem; font-weight: 300; opacity: 0.75; margin-top: 0.5rem; }
+        .contact-bar { background: var(--navy-dark); border-top: 1px solid rgba(255,255,255,0.1); }
+        .contact-bar-inner { max-width: 960px; margin: 0 auto; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.85rem; }
+        .contact-bar a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.2s; }
+        .contact-bar a:hover { color: var(--white); }
+        main { max-width: 960px; margin: 0 auto; padding: 3rem 2rem; }
+        section { margin-bottom: 3rem; }
+        section h3 { font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--grey-light); }
+        p { margin-bottom: 1rem; color: var(--grey-text); }
+        p:last-child { margin-bottom: 0; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .service-item { margin-bottom: 1.25rem; padding-left: 1rem; border-left: 3px solid var(--grey-light); }
+        .service-item strong { color: var(--text-dark); font-weight: 600; }
+        .service-item p { font-size: 0.9rem; margin-top: 0.25rem; margin-bottom: 0; }
+        .pain-points { list-style: none; padding: 0; }
+        .pain-points li { position: relative; padding-left: 1.5rem; margin-bottom: 0.6rem; color: var(--grey-text); font-size: 0.95rem; }
+        .pain-points li::before { content: "\2014"; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+        .how-section p { font-size: 0.95rem; }
+        .sector-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+        .sector-tag { background: var(--off-white); color: var(--navy); padding: 0.35rem 0.85rem; border-radius: 4px; font-size: 0.8rem; font-weight: 500; border: 1px solid var(--grey-light); }
+        .cta-footer { background: var(--navy); color: var(--white); padding: 3rem 2rem; text-align: center; }
+        .cta-footer h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--white); border: none; padding: 0; }
+        .cta-footer p { color: rgba(255,255,255,0.75); font-size: 1rem; max-width: 520px; margin: 0 auto 2rem; }
+        .cta-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; font-size: 0.95rem; }
+        .cta-links a { color: var(--white); text-decoration: none; padding: 0.6rem 1.5rem; border: 1px solid rgba(255,255,255,0.4); border-radius: 4px; transition: all 0.2s; }
+        .cta-links a:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
+        .cta-links a.primary { background: var(--white); color: var(--navy); font-weight: 600; border-color: var(--white); }
+        .cta-links a.primary:hover { background: var(--off-white); }
+        footer { background: var(--navy-dark); color: rgba(255,255,255,0.5); text-align: center; padding: 1rem; font-size: 0.75rem; }
+        @media (max-width: 680px) { .header-top { flex-direction: column; align-items: flex-start; } .header-text h1 { font-size: 1.6rem; } .header-tagline h2 { font-size: 1.15rem; } .two-col { grid-template-columns: 1fr; gap: 2rem; } .contact-bar-inner { flex-direction: column; gap: 0.5rem; } .cta-links { flex-direction: column; align-items: center; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-top">
+        <div class="logo">PT</div>
+        <div class="header-text">
+            <h1>Phil Tinsley</h1>
+            <div class="subtitle">Operations & Change Consultant</div>
+        </div>
+    </div>
+    <div class="header-tagline">
+        <h2>Helping organisations go digital without losing what works.</h2>
+        <div class="services-line">Practical change management &nbsp;|&nbsp; Digital transformation & AI &nbsp;|&nbsp; Quality & compliance systems</div>
+    </div>
+    <div class="contact-bar">
+        <div class="contact-bar-inner">
+            <a href="mailto:me@philtinsley.com">me@philtinsley.com</a>
+            <a href="tel:+447771934642">07771 934642</a>
+            <a href="https://linkedin.com/in/philtinsley" target="_blank" rel="noopener">linkedin.com/in/philtinsley</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="two-col">
+        <section>
+            <h3>What I Do</h3>
+            <p>I work alongside business owners and leadership teams to redesign how their organisations operate &mdash; then help them implement the changes that work in the real world.</p>
+            <div class="service-item">
+                <strong>Operations redesign</strong>
+                <p>Streamlining how work gets done, from frontline processes to back-office systems.</p>
+            </div>
+            <div class="service-item">
+                <strong>Digital transformation & AI</strong>
+                <p>Choosing the right tools, getting staff on board, and making the technology serve the business.</p>
+            </div>
+            <div class="service-item">
+                <strong>Quality & compliance</strong>
+                <p>Building systems that maintain standards through change, not despite it.</p>
+            </div>
+            <div class="service-item">
+                <strong>Change management</strong>
+                <p>The practical, human side of making new ways of working take root.</p>
+            </div>
+        </section>
+
+        <section>
+            <h3>Why Businesses Need This</h3>
+            <p>Most organisations know they need to change. The challenge is doing it without disrupting what's already working, losing good staff, or spending a fortune on technology nobody uses.</p>
+            <p>If any of these sound familiar, we should talk:</p>
+            <ul class="pain-points">
+                <li>You've grown but your processes haven't kept up</li>
+                <li>You're still running on spreadsheets, paper, or outdated systems</li>
+                <li>Staff resist new ways of working</li>
+                <li>You know AI could help but don't know where to start</li>
+                <li>Compliance and quality feel like firefighting rather than business as usual</li>
+            </ul>
+        </section>
+    </div>
+
+    <section class="how-section">
+        <h3>How I Work</h3>
+        <p>I embed with your team rather than observe from the outside. Whether it's a focused project or longer-term support, I work at the pace your organisation can handle &mdash; from scoping through to implementation and handover.</p>
+        <p>Over 25 years in social care and housing, I've worked my way through every level &mdash; from support worker to deputy, manager, operations, and director. Across adult residential, supported living, children's services, retirement housing, and homeless provision, I've seen how organisations really work. That means I understand what looks good on paper and what actually works in practice.</p>
+    </section>
+
+    <section>
+        <h3>Sectors</h3>
+        <p>My background is in social care, but the principles apply anywhere people, processes, and technology need to work together.</p>
+        <div class="sector-tags">
+            <span class="sector-tag">Adult Social Care</span>
+            <span class="sector-tag">Supported Living</span>
+            <span class="sector-tag">Domiciliary Care</span>
+            <span class="sector-tag">Residential Care</span>
+            <span class="sector-tag">Housing</span>
+            <span class="sector-tag">NHS & Health</span>
+            <span class="sector-tag">Charities & Third Sector</span>
+            <span class="sector-tag">SMEs</span>
+        </div>
+    </section>
+</main>
+
+<div class="cta-footer">
+    <h3>Let's have a conversation.</h3>
+    <p>No hard sell, no jargon &mdash; just a chat about what's holding your business back and whether I can help.</p>
+    <div class="cta-links">
+        <a href="mailto:me@philtinsley.com" class="primary">Email me</a>
+        <a href="tel:+447771934642">Call 07771 934642</a>
+        <a href="https://linkedin.com/in/philtinsley" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 Phil Tinsley. All rights reserved.
+</footer>
+
+</body>
+</html>
