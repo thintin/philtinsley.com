@@ -152,6 +152,24 @@ document.querySelector('.nav-toggle').addEventListener('click', function() {
     document.querySelector('.nav-links').classList.toggle('open');
 });
 </script>
+      <!-- Make.com Webhook: dual-submit form data to lead tracking sheet -->
+    <script>
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+        var form = e.target;
+        var data = {
+            name: form.querySelector('#name').value,
+            email: form.querySelector('#email').value,
+            phone: form.querySelector('#phone').value || '',
+            message: form.querySelector('#message').value
+        };
+        fetch('https://hook.eu1.make.com/myjh9apb64se8zv9n7brfcf7gq831dpg', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+            mode: 'no-cors'
+        }).catch(function() {});
+    });
+    </script>
 
 <script src="js/contact-protect.js"></script>
 </body>
