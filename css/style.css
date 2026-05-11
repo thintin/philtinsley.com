@@ -5,17 +5,28 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    --navy: #1B365D;
-    --navy-light: #2A4A7A;
-    --navy-dark: #0F1F3A;
+    /* Primary — navy (60%) */
+    --navy: #0E2A47;
+    --navy-light: #1B3A5C;
+    --navy-dark: #081A2E;
+    --navy-deep: #081A2E;
+    /* Secondary — sage (30%) */
+    --sage: #7BA098;
+    --sage-soft: #B8CFC8;
+    /* Accent — clay (10%) */
+    --accent: #C97B3D;
+    --accent-light: #E8B991;
+    --clay: #C97B3D;
+    --clay-soft: #E8B991;
+    /* Neutrals */
     --white: #FFFFFF;
-    --off-white: #F7F8FA;
-    --grey-light: #E8EBF0;
+    --off-white: #FAF8F4;
+    --warm-grey: #E8E4DD;
+    --grey-light: #E8E4DD;
     --grey-mid: #C5CAD3;
     --grey-text: #5A6577;
-    --text-dark: #1A1A2E;
-    --accent: #3B82C4;
-    --accent-light: #EBF3FB;
+    --text-dark: #2A2A2A;
+    --charcoal: #2A2A2A;
     --max-width: 960px;
 }
 
@@ -112,6 +123,41 @@ nav {
     max-width: 700px;
 }
 
+.hero .role {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--sage-soft);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+}
+
+.hero .tagline {
+    font-size: 1.35rem;
+    font-weight: 400;
+    margin-top: 1rem;
+    max-width: 720px;
+    line-height: 1.4;
+}
+
+.hero .supporting {
+    font-size: 1.05rem;
+    font-weight: 300;
+    opacity: 0.85;
+    margin-top: 1rem;
+    max-width: 640px;
+    line-height: 1.6;
+}
+
+.hero .credential {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--sage-soft);
+    margin-top: 1.25rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--clay);
+}
+
 .hero .subtitle {
     font-size: 1.05rem;
     font-weight: 300;
@@ -175,11 +221,11 @@ nav {
 }
 
 .btn-primary {
-    background: var(--white);
-    color: var(--navy);
+    background: var(--clay);
+    color: var(--white);
 }
 
-.btn-primary:hover { background: var(--off-white); color: var(--navy); }
+.btn-primary:hover { background: var(--navy); color: var(--white); }
 
 .btn-outline {
     background: transparent;
@@ -383,8 +429,8 @@ nav {
 
 /* ===== TESTIMONIAL ===== */
 .testimonial {
-    background: var(--accent-light);
-    border-left: 4px solid var(--accent);
+    background: var(--sage-soft);
+    border-left: 4px solid var(--sage);
     padding: 1.5rem 1.75rem;
     border-radius: 0 6px 6px 0;
     margin: 2rem 0;
@@ -469,7 +515,7 @@ nav {
 /* ===== SITE FOOTER ===== */
 .site-footer {
     background: var(--navy-dark);
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.55);
     padding: 2rem;
 }
 
@@ -480,11 +526,50 @@ nav {
     justify-content: space-between;
     align-items: center;
     font-size: 0.78rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .footer-links { display: flex; gap: 1.5rem; }
-.footer-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.78rem; }
-.footer-links a:hover { color: rgba(255,255,255,0.8); }
+.footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.78rem; }
+.footer-links a:hover { color: rgba(255,255,255,0.9); }
+
+/* Trust strip — compact line above main footer or as part of it */
+.trust-strip {
+    background: var(--navy-deep);
+    color: rgba(255,255,255,0.7);
+    padding: 1rem 2rem;
+    font-size: 0.82rem;
+    text-align: center;
+}
+
+.trust-strip .trust-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.25rem;
+    align-items: center;
+}
+
+.trust-strip .trust-line {
+    color: var(--white);
+    font-weight: 500;
+}
+
+.trust-strip .trust-divider {
+    opacity: 0.4;
+}
+
+.trust-strip a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+}
+
+.trust-strip a:hover {
+    color: var(--white);
+}
 
 /* ===== ARTICLE STYLES (for insights/blog) ===== */
 .articles-list { display: flex; flex-direction: column; gap: 0; }
@@ -556,6 +641,7 @@ nav {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .hero h1 { font-size: 1.7rem; }
+    .hero .tagline { font-size: 1.15rem; }
     .grid-2 { grid-template-columns: 1fr; }
     .grid-3 { grid-template-columns: 1fr; }
     .stats-bar { grid-template-columns: 1fr; gap: 1rem; }
