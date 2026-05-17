@@ -472,10 +472,10 @@ nav.scrolled {
 .bento-span-2 { grid-column: span 2; }
 
 .bento-primary {
-    background: var(--white); border-color: var(--grey-light);
+    background: var(--navy); border-color: var(--navy); color: var(--white);
 }
-.bento-primary h3 { color: var(--navy); }
-.bento-primary p { color: var(--grey-text); }
+.bento-primary h3 { color: var(--white) !important; font-size: 1.5rem; }
+.bento-primary p { color: rgba(255,255,255,0.85) !important; font-size: 0.97rem; }
 
 .bento-accent {
     background: var(--clay); border-color: var(--clay); color: var(--white);
