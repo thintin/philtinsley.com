@@ -1094,3 +1094,13 @@ nav.scrolled {
     .quote-card { padding: 2.25rem 1.75rem; }
     .scroll-indicator { display: none; }
 }
+
+
+.credential-strip-inner .cred-item:last-child {
+     flex-basis: 100%;
+     padding-top: 0.75rem;
+}
+
+.credential-strip-inner .cred-divider:last-of-type {
+     display: none;
+}
