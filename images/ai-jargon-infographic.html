@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Jargon Explained — Phil Tinsley</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #E8E4DD;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .infographic {
+      width: 800px;
+      background: #FAF8F4;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: #0E2A47;
+      padding: 2.75rem 2.75rem 2.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: 320px;
+      background: radial-gradient(ellipse 80% 100% at 100% 50%, rgba(201,123,61,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: #C97B3D;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .header-eyebrow::before {
+      content: '';
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: #C97B3D;
+      flex-shrink: 0;
+    }
+
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.9rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      line-height: 1.1;
+      letter-spacing: -0.4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header h1 em {
+      font-style: italic;
+      color: #E8B991;
+    }
+
+    .header-sub {
+      font-size: 0.84rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.75rem;
+      max-width: 500px;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: #E8E4DD;
+      border-top: 1px solid #E8E4DD;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-header {
+      padding: 1rem 1.35rem 0.85rem;
+      position: relative;
+    }
+
+    .card-header.navy  { background: #0E2A47; }
+    .card-header.clay  { background: #C97B3D; }
+    .card-header.sage  { background: #7BA098; }
+
+    .card-number {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.2rem;
+    }
+
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      line-height: 1.15;
+      letter-spacing: -0.2px;
+    }
+
+    .card-body {
+      padding: 1.1rem 1.35rem 1.35rem;
+      flex: 1;
+      background: #FFFFFF;
+    }
+
+    .card-body p {
+      font-size: 0.815rem;
+      line-height: 1.7;
+      color: #5A6577;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #0E2A47;
+      padding: 1.35rem 2.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 3px solid #C97B3D;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-monogram {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #FFFFFF;
+      flex-shrink: 0;
+    }
+
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    .footer-title {
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.1rem;
+      letter-spacing: 0.2px;
+    }
+
+    .footer-contact {
+      text-align: right;
+      font-size: 0.73rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.8;
+    }
+
+    .footer-contact a,
+    .footer-contact span.accent {
+      color: #E8B991;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="infographic">
+
+    <div class="header">
+      <div class="header-eyebrow">A Guide for Care Leaders</div>
+      <h1>AI Jargon <em>Explained</em></h1>
+      <p class="header-sub">Nine terms you'll encounter when vendors, consultants or colleagues talk about AI — and what they actually mean in a care context.</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- Row 1 -->
+      <div class="card">
+        <div class="card-header navy">
+          <div class="card-number">01</div>
+          <div class="card-name">AI</div>
+        </div>
+        <div class="card-body">
+          <p>Software that mimics human judgement by finding patterns in data. In care, AI can assist with documentation, scheduling and flagging anomalies — but it doesn't understand context the way a person does. The tool is only as useful as the workflow around it.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header clay">
+          <div class="card-number">02</div>
+          <div class="card-name">LLM</div>
+        </div>
+        <div class="card-body">
+          <p>Large Language Model — the engine behind ChatGPT, Claude and most AI writing tools. Trained on enormous amounts of text, it generates fluent, human-sounding output. Useful for drafting policies or summaries, but it can produce plausible-sounding errors. Always verify.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header sage">
+          <div class="card-number">03</div>
+          <div class="card-name">Agent</div>
+        </div>
+        <div class="card-body">
+          <p>An AI that acts, not just responds. Rather than answering a question, an agent can retrieve information, make decisions and complete tasks autonomously — like pulling a care plan, summarising it and sending it on. This is where AI starts operating inside workflows independently.</p>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="card">
+        <div class="card-header clay">
+          <div class="card-number">04</div>
+          <div class="card-name">Compute</div>
+        </div>
+        <div class="card-body">
+          <p>The processing power that runs AI. For care providers, this determines whether a tool runs locally (on your hardware) or in the cloud — with direct implications for data security, GDPR compliance and what happens when connectivity fails.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header sage">
+          <div class="card-number">05</div>
+          <div class="card-name">Token</div>
+        </div>
+        <div class="card-body">
+          <p>How AI processes text — in chunks roughly ¾ the size of a word. Tokens define what an AI can "see" at once (its context window) and are often what you're billed for. Long care records or policy documents may exceed a model's limit in a single session.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header navy">
+          <div class="card-number">06</div>
+          <div class="card-name">Hallucination</div>
+        </div>
+        <div class="card-body">
+          <p>When AI produces confident, fluent — but factually wrong — output. In a care setting, this is why AI-drafted assessments, care notes or incident reports must always be reviewed before being filed or acted on. Fluency is not the same as accuracy.</p>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="card">
+        <div class="card-header sage">
+          <div class="card-number">07</div>
+          <div class="card-name">Workflow</div>
+        </div>
+        <div class="card-body">
+          <p>The sequence of steps that get work done. AI doesn't replace workflows — it plugs into them. Before adopting any AI tool, you need to understand your current process. Most failed AI implementations started without that understanding.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header navy">
+          <div class="card-number">08</div>
+          <div class="card-name">Training Data</div>
+        </div>
+        <div class="card-body">
+          <p>The information an AI learned from. It determines what the model knows — and doesn't. A general-purpose AI has no knowledge of your organisation, your residents or your CQC history unless you explicitly provide that context in your prompts or system setup.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header clay">
+          <div class="card-number">09</div>
+          <div class="card-name">Oversight</div>
+        </div>
+        <div class="card-body">
+          <p>The human checks that sit around AI use. In regulated care, oversight is non-negotiable. CQC expects evidenced, accountable decision-making. If AI assisted, you need to show how the output was reviewed. Oversight is what makes AI use defensible — and safe.</p>
+        </div>
+      </div>
+
+    </div><!-- /grid -->
+
+    <div class="footer">
+      <div class="footer-left">
+        <div class="footer-monogram">PT</div>
+        <div>
+          <div class="footer-name">Phil Tinsley</div>
+          <div class="footer-title">Operations &amp; Change Consultant · philtinsley.com</div>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <span class="accent">me@philtinsley.com</span> · 07771 934642<br>
+        linkedin.com/in/philtinsley
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
