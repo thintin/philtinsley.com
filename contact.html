@@ -167,22 +167,68 @@ document.querySelector('.nav-toggle').addEventListener('click', function() {
     document.querySelector('.nav-links').classList.toggle('open');
 });
 </script>
-      <!-- Make.com Webhook: dual-submit form data to lead tracking sheet -->
+    <!-- Form submit: AJAX to Formspree; only record the lead on confirmed delivery -->
     <script>
     document.querySelector('.contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
         var form = e.target;
-        var data = {
+        var btn = form.querySelector('button[type="submit"]');
+        var originalText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        var payload = {
             name: form.querySelector('#name').value,
             email: form.querySelector('#email').value,
             phone: form.querySelector('#phone').value || '',
             message: form.querySelector('#message').value
         };
-        fetch('https://hook.eu1.make.com/myjh9apb64se8zv9n7brfcf7gq831dpg', {
+
+        var oldError = form.querySelector('.form-error');
+        if (oldError) oldError.remove();
+
+        function showError(msg) {
+            btn.disabled = false;
+            btn.textContent = originalText;
+            var p = document.createElement('p');
+            p.className = 'form-error';
+            p.style.cssText = 'color:#b91c1c;font-size:0.9rem;margin-top:0.75rem;';
+            p.innerHTML = msg;
+            btn.parentNode.insertBefore(p, btn.nextSibling);
+        }
+
+        fetch(form.action, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-            mode: 'no-cors'
-        }).catch(function() {});
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }).then(function(res) {
+            if (res.ok) {
+                // Delivery confirmed by Formspree - only now record the lead
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ event: 'form_submit_success' });
+
+                // Mirror confirmed lead to tracking sheet
+                fetch('https://hook.eu1.make.com/myjh9apb64se8zv9n7brfcf7gq831dpg', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                    mode: 'no-cors'
+                }).catch(function() {});
+
+                form.innerHTML = '<div style="padding:1rem 0;"><h3>Thanks &mdash; your message is on its way.</h3>' +
+                    '<p>I\'ll get back to you within one working day.</p></div>';
+            } else {
+                res.json().then(function(body) {
+                    var msg = (body && body.errors) ? body.errors.map(function(x){ return x.message; }).join(', ')
+                        : 'Something went wrong. Please email me directly at me@philtinsley.com.';
+                    showError(msg);
+                }).catch(function() {
+                    showError('Something went wrong. Please email me directly at me@philtinsley.com.');
+                });
+            }
+        }).catch(function() {
+            showError('Network error &mdash; please email me directly at me@philtinsley.com.');
+        });
     });
     </script>
 
